@@ -1,0 +1,51 @@
+Responder
+LLMNR/NBT-NS/MDNS poisoner and credential harvester
+
+Sniffing & Spoofing
+Description
+Responder is a tool that poisons LLMNR, NBT-NS, and MDNS queries on a network, capturing NTLMv1/v2 hashes from victims. It's used for internal network penetration testing.
+
+Installation / Check
+Check if installed:
+
+which responder
+Install command:
+
+sudo apt install responder
+Basic Syntax
+responder -I <interface> [options]
+Common Commands
+Command	What it does	When to use	Risk
+responder -I eth0
+
+Basic poisoning	Start capturing hashes on network	
+responder -I eth0 -wrf
+
+Full attack mode	Enable WPAD, fingerprinting	
+responder -I eth0 -A
+
+Analyze mode	Passive analysis without poisoning	
+Step-by-Step Guide
+1
+Connect to target network
+2
+Run responder on correct interface
+3
+Wait for victims to make requests
+4
+Capture hashes in logs
+5
+Crack hashes with hashcat/john
+Understanding the Output
+Shows captured credentials with username, domain, and NTLMv1/v2 hash. Hashes saved in /usr/share/responder/logs/
+
+Important Warnings
+•
+Only use on networks you have permission to test
+•
+Can disrupt network services
+•
+Very detectable by security tools
+•
+Illegal without authorization
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
