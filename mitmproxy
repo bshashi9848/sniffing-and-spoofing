@@ -1,0 +1,55 @@
+mitmproxy
+Interactive HTTPS proxy for traffic inspection
+
+Sniffing & Spoofing
+Description
+mitmproxy is an interactive TLS-capable intercepting HTTP proxy. It can intercept, inspect, modify and replay web traffic for security testing.
+
+Installation / Check
+Check if installed:
+
+which mitmproxy
+Install command:
+
+sudo apt install mitmproxy
+Basic Syntax
+mitmproxy
+Common Commands
+Command	What it does	When to use	Risk
+mitmproxy
+
+Launch interactive proxy	Intercept HTTP/S traffic	
+mitmproxy -p 8080
+
+Custom port	Different port	
+mitmdump -w traffic.flow
+
+Dump to file	Record traffic	
+mitmweb
+
+Web interface	Browser-based UI	
+mitmdump -s script.py
+
+With script	Automated modification	
+Step-by-Step Guide
+1
+Start mitmproxy
+2
+Configure browser/device to use proxy
+3
+Install mitmproxy CA cert for HTTPS
+4
+Intercept and inspect requests
+5
+Modify and replay as needed
+Understanding the Output
+Shows request/response pairs with headers and body. Interactive editing.
+
+Important Warnings
+•
+Intercepting others traffic is illegal
+•
+CA cert installation needed for HTTPS
+•
+Use for authorized testing only
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
