@@ -1,0 +1,53 @@
+macchanger
+MAC address changer for network interfaces
+
+Sniffing & Spoofing
+Description
+macchanger is a utility for viewing and manipulating the MAC address of network interfaces. Useful for network anonymity and bypassing MAC filtering.
+
+Installation / Check
+Check if installed:
+
+which macchanger
+Install command:
+
+sudo apt install macchanger
+Basic Syntax
+macchanger [options] <interface>
+Common Commands
+Command	What it does	When to use	Risk
+macchanger -s eth0
+
+Show current MAC	View MAC address	
+sudo macchanger -r eth0
+
+Random MAC	Randomize MAC	
+sudo macchanger -m XX:XX:XX:XX:XX:XX eth0
+
+Set specific MAC	Impersonate device	
+sudo macchanger -p eth0
+
+Reset to permanent	Restore original	
+sudo macchanger -a eth0
+
+Same vendor random	Keep vendor prefix	
+Step-by-Step Guide
+1
+Bring interface down: sudo ifconfig eth0 down
+2
+Change MAC: sudo macchanger -r eth0
+3
+Bring interface up: sudo ifconfig eth0 up
+4
+Verify: macchanger -s eth0
+Understanding the Output
+Shows current, permanent, and new MAC addresses.
+
+Important Warnings
+•
+Interface must be down before changing
+•
+MAC spoofing may violate policies
+•
+Resets on reboot by default
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
