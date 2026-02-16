@@ -1,0 +1,63 @@
+Bettercap
+Swiss Army knife for network attacks
+
+Sniffing & Spoofing
+Description
+Bettercap is a powerful, flexible network attack and monitoring framework. Successor to ettercap with WiFi, Bluetooth, and more.
+
+Installation / Check
+Check if installed:
+
+which bettercap
+Install command:
+
+sudo apt install bettercap
+Basic Syntax
+sudo bettercap
+Common Commands
+Command	What it does	When to use	Risk
+sudo bettercap
+
+Launch interactive	Start bettercap	
+net.probe on
+
+Discover hosts	Find devices	
+net.show
+
+Show discovered hosts	View network	
+set arp.spoof.targets 192.168.1.100
+
+Set ARP target	Configure MITM	
+arp.spoof on
+
+Start ARP spoof	Begin MITM	
+net.sniff on
+
+Start sniffer	Capture traffic	
+wifi.recon on
+
+WiFi recon	Scan WiFi	
+Step-by-Step Guide
+1
+Launch bettercap
+2
+Run net.probe on
+3
+View hosts with net.show
+4
+Set targets
+5
+Start arp.spoof
+6
+Enable net.sniff
+Understanding the Output
+Interactive console showing network activity and captured data.
+
+Important Warnings
+•
+Powerful tool - use responsibly
+•
+MITM attacks need permission
+•
+Can disrupt networks
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
