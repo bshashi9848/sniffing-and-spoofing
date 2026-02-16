@@ -1,0 +1,44 @@
+arpspoof
+Simple ARP spoofing utility
+
+Sniffing & Spoofing
+Description
+arpspoof redirects packets from a target host on the LAN to another host by forging ARP replies. Part of dsniff suite.
+
+Installation / Check
+Check if installed:
+
+which arpspoof
+Install command:
+
+sudo apt install dsniff
+Basic Syntax
+arpspoof -i <interface> -t <target> <gateway>
+Common Commands
+Command	What it does	When to use	Risk
+sudo arpspoof -i eth0 -t 192.168.1.100 192.168.1.1
+
+Spoof target to gateway	MITM setup	
+sudo arpspoof -i eth0 -t 192.168.1.1 192.168.1.100
+
+Spoof gateway to target	Complete MITM	
+Step-by-Step Guide
+1
+Enable IP forwarding: echo 1 > /proc/sys/net/ipv4/ip_forward
+2
+Run arpspoof to target
+3
+Run arpspoof to gateway (another terminal)
+4
+Use other tools to capture traffic
+Understanding the Output
+Shows spoofed ARP packets being sent.
+
+Important Warnings
+•
+ARP spoofing is illegal without permission
+•
+Will disrupt target connectivity if not done right
+•
+Enable IP forwarding
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
