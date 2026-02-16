@@ -1,0 +1,62 @@
+Ettercap
+Comprehensive suite for man-in-the-middle attacks
+
+Sniffing & Spoofing
+Description
+Ettercap is a comprehensive suite for man-in-the-middle attacks. It features sniffing of live connections, content filtering, and many other interesting tricks. It supports active and passive dissection of many protocols.
+
+Installation / Check
+Check if installed:
+
+which ettercap
+Install command:
+
+sudo apt install ettercap-graphical
+Basic Syntax
+ettercap -G (GUI) or ettercap -T (text)
+Common Commands
+Command	What it does	When to use	Risk
+ettercap -G
+
+Launch GUI - Opens graphical interface	For visual man-in-the-middle attacks	
+ettercap -T -q -i eth0
+
+Text mode quiet - CLI mode with minimal output	For headless systems	
+ettercap -T -M arp:remote /192.168.1.1// /192.168.1.100//
+
+ARP poisoning - MITM between two hosts	To intercept traffic between hosts	
+ettercap -T -w capture.pcap -M arp:remote ///
+
+Capture to file - Save intercepted traffic	To analyze traffic later	
+Step-by-Step Guide
+1
+Launch ettercap: sudo ettercap -G
+2
+Select network interface
+3
+Scan for hosts: Hosts > Scan for hosts
+4
+Select targets from host list
+5
+Choose attack: Mitm > ARP poisoning
+6
+Start sniffing: Start > Start sniffing
+7
+View intercepted data in GUI
+8
+Stop attack when done
+Understanding the Output
+Ettercap shows intercepted packets, usernames/passwords from unencrypted protocols, and connection status. Successful ARP poisoning shows in the status bar.
+
+Important Warnings
+•
+MITM attacks are HIGHLY ILLEGAL without permission
+•
+ARP poisoning can disrupt network connectivity
+•
+Detection systems will likely alert on this activity
+•
+Only use in isolated lab environments for learning
+•
+Can crash network devices if misconfigured
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
