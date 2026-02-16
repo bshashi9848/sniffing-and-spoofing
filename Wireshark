@@ -1,0 +1,126 @@
+Wireshark
+Network protocol analyzer for traffic inspection
+
+Sniffing & Spoofing
+Description
+Wireshark is the world's foremost network protocol analyzer. It lets you capture and interactively browse the traffic running on a computer network, showing packet details at the protocol level.
+
+Installation / Check
+Check if installed:
+
+which wireshark
+Install command:
+
+sudo apt install wireshark
+Basic Syntax
+wireshark (GUI) or tshark (CLI)
+Common Commands
+Command	What it does	When to use	Risk
+wireshark
+
+Launch GUI - Open graphical interface	Interactive analysis	
+tshark -i eth0
+
+CLI capture - Command line capture	Headless systems	
+Filter: http
+
+HTTP filter - Web traffic only	Web traffic analysis	
+Filter: ip.addr == 192.168.1.1
+
+IP filter - Specific host	Focus on one IP	
+Filter: tcp.port == 443
+
+Port filter - Specific port	Service analysis	
+Filter: tcp.flags.syn == 1
+
+SYN packets - New connections	Connection analysis	
+Filter: dns
+
+DNS traffic - Name resolution	DNS analysis	
+Filter: ftp || ftp-data
+
+FTP traffic - File transfers	FTP analysis	
+Filter: http.request.method == "POST"
+
+POST requests - Form submissions	Find login attempts	
+Filter: http contains "password"
+
+Password search - Find creds	Credential hunting	
+Filter: tcp.analysis.retransmission
+
+Retransmissions - Network issues	Network debugging	
+Right-click > Follow > TCP Stream
+
+Follow stream - Full conversation	See request/response	
+tshark -i eth0 -w capture.pcap
+
+Save capture - Write to file	Save for later	
+tshark -r capture.pcap -Y "http"
+
+Read file - Filter saved capture	Offline analysis	
+tshark -i eth0 -f "port 80"
+
+Capture filter - Capture only port 80	Reduce data	
+tshark -i eth0 -Y "http.request" -T fields -e http.host -e http.request.uri
+
+Field extraction - Custom output	Data extraction	
+Filter: frame contains "secret"
+
+String search - Find in packets	Data discovery	
+Filter: tcp.stream eq 5
+
+Stream filter - Specific TCP stream	Isolate conversation	
+Filter: !(arp || icmp || dns)
+
+Exclude protocols - Hide noise	Clean display	
+Filter: http.response.code >= 400
+
+Error responses - HTTP errors	Find issues	
+tshark -i eth0 -a duration:60
+
+Timed capture - 60 seconds	Limited capture	
+tshark -i eth0 -b filesize:10000
+
+Ring buffer - Split by size	Long captures	
+Filter: wlan.fc.type_subtype == 0x08
+
+WiFi beacons - AP announcements	Wireless analysis	
+Statistics > Conversations
+
+Conversations - Traffic stats	Network overview	
+Statistics > Protocol Hierarchy
+
+Protocol stats - Traffic breakdown	Protocol analysis	
+File > Export Objects > HTTP
+
+Export HTTP - Extract files	Recover files	
+Step-by-Step Guide
+1
+Launch Wireshark with sudo wireshark
+2
+Select network interface to capture from
+3
+Click Start Capture (shark fin icon)
+4
+Generate traffic or wait for packets
+5
+Apply display filters to focus on interesting traffic
+6
+Click on packets to see details
+7
+Use Follow > TCP Stream to see conversations
+8
+Stop capture and save for later analysis
+Understanding the Output
+Wireshark shows three panes: packet list (summary), packet details (protocol breakdown), and packet bytes (hex dump). Colors indicate different traffic types. Red typically means issues.
+
+Important Warnings
+•
+Capturing traffic on networks you don't own may be illegal
+•
+You may inadvertently capture sensitive data
+•
+Some encrypted traffic (HTTPS) can't be read directly
+•
+Captures can consume significant disk space
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
