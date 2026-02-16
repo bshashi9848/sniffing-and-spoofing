@@ -1,0 +1,58 @@
+tcpdump
+Command-line packet analyzer
+
+Sniffing & Spoofing
+Description
+tcpdump is a powerful command-line packet analyzer. It allows you to capture and display TCP/IP packets transmitted over a network.
+
+Installation / Check
+Check if installed:
+
+which tcpdump
+Install command:
+
+sudo apt install tcpdump
+Basic Syntax
+tcpdump [options] [expression]
+Common Commands
+Command	What it does	When to use	Risk
+sudo tcpdump -i eth0
+
+Capture on interface	Basic capture	
+sudo tcpdump -i eth0 -w capture.pcap
+
+Save to file	Record traffic	
+sudo tcpdump -i eth0 port 80
+
+HTTP traffic only	Filter by port	
+sudo tcpdump -i eth0 host 192.168.1.100
+
+Specific host	Monitor host	
+sudo tcpdump -i eth0 -A
+
+ASCII output	Read packet data	
+sudo tcpdump -r capture.pcap
+
+Read capture file	Analyze saved capture	
+Step-by-Step Guide
+1
+Choose interface
+2
+Set capture filter if needed
+3
+Run tcpdump
+4
+Save to file with -w
+5
+Analyze with -r or Wireshark
+Understanding the Output
+Shows packet headers and optionally payload data.
+
+Important Warnings
+•
+Requires root privileges
+•
+Only capture authorized traffic
+•
+Can generate large files
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
